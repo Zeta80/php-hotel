@@ -37,7 +37,7 @@ $hotels = [
         'distance_to_center' => 50
     ],
 ];
-var_dump($hotels)
+
 
 
 ?>
@@ -50,6 +50,9 @@ var_dump($hotels)
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <!-- BOOSTRAP -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -57,18 +60,47 @@ var_dump($hotels)
         $hotel = $hotels[$i];
     ?>
 
-        <h3>
-            <?php echo $hotel["name"] . " " . $hotel["description"]; ?>
-        </h3>
-        <p> ha parcheggio: <?php
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">HOTEL</th>
+                    <th><?php echo $hotel["name"]; ?></th>
+
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                <tr>
+                    <th scope="row">DESCRIZIONE</th>
+                    <td> <?php echo  $hotel["description"]; ?> </td>
+
+                </tr>
+                <tr>
+                    <th scope="row">DISTANZA DAL CENTRO</th>
+                    <td> <?php echo $hotel["distance_to_center"]  ?> </td>
+
+                </tr>
+                <tr>
+                    <th scope="row">VOTO</th>
+
+                    <td> <?php echo $hotel["vote"]  ?> </td>
+                </tr>
+                <tr>
+                    <th scope="row">PARCHEGGIO</th>
+
+                    <td> <?php
                             if ($hotel["parking"]) {
                                 echo "si";
                             } else {
                                 echo "no";
                             }
-                            ?> </p>
-        <p> voto: <?php echo $hotel["vote"]  ?> </p>
-        <p> distanza dal centro: <?php echo $hotel["distance_to_center"]  ?> </p>
+                            ?>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
 
 
     <?php } ?>
